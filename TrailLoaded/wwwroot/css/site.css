@@ -1,0 +1,83 @@
+html {
+  font-size: 14px;
+}
+/* Remove default margin/padding from body and html */
+body, html {
+    margin: 0;
+    padding: 0;
+}
+
+/* Carousel container full width, no padding or margin */
+.full-width-carousel {
+    width: 100vw; /* full viewport width */
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+/* Carousel inner: no padding or margin */
+.carousel-inner {
+    width: 100vw;
+    margin: 0;
+    padding: 0;
+}
+
+/* Each carousel item fills full width */
+.carousel-item {
+    width: 100vw;
+    margin: 0;
+    padding: 0;
+}
+
+    /* Carousel image styling */
+    .carousel-item img {
+        width: 100vw; /* full viewport width */
+        height: 370px; /* fixed height */
+        object-fit: cover; /* fills container, crops if needed */
+        display: block;
+        margin: 0 auto; /* centers image horizontally */
+    }
+
+/* Responsive smaller height on mobile */
+@media (max-width: 768px) {
+    .carousel-item img {
+        height: 300px;
+    }
+}
+
+/* Caption background */
+.carousel-caption {
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 1rem;
+    border-radius: 10px;
+}
+
+/* Remove gap above carousel */
+.carousel {
+    margin-top: 0 !important;
+}
+
+/* Remove container padding if you have container-fluid */
+.container-fluid {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}

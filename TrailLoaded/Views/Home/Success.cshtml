@@ -1,0 +1,21 @@
+﻿@{
+    ViewData["Title"] = "Admission Success";
+}
+
+<div class="container mt-5">
+    @if (TempData["Success"] != null)
+    {
+        <div class="alert alert-success shadow rounded-3 p-4 text-center">
+            <h4 class="fw-bold">@TempData["Success"]</h4>
+            <p>Your details have been saved in the system.</p>
+        </div>
+    }
+
+    <div class="text-center mt-3">
+        <a href="@Url.Action("NewAdmission","Home")" class="btn btn-primary">
+            Add Another Admission
+        </a>
+    </div>
+</div>
+
+

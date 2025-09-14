@@ -1,0 +1,130 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - TrailLoaded</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link href="~/css/StyleSheet.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+
+    <style>
+        html, body {
+            height: 100%;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+        }
+
+        main {
+            flex: 1;
+        }
+
+        .bg-black {
+            background-color: #000 !important;
+        }
+
+        footer {
+            flex-shrink: 0;
+            margin-top: 0;
+           
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-black shadow-sm">
+            <div class="container">
+                <a class="navbar-brand d-flex align-items-center" asp-controller="Home" asp-action="Index">
+                    <img src="~/images/LogoTree.png" alt="Logo" width="40" height="40" class="d-inline-block align-text-top me-2">
+                    <span class="fw-bold">TrailLoaded</span>
+                </a>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 text-warning">
+                        <li class="nav-item">
+                            <a class="nav-link text-warning" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-warning" asp-controller="Home" asp-action="About">About Us</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-warning" asp-controller="Home" asp-action="Contact">Contact</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-warning" asp-controller="Home" asp-action="NewAdmission">New Admission</a>
+                        </li>
+                    </ul>
+                    <a class="btn btn-outline-light" asp-controller="Account" asp-action="Login">Login</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container-fluid px-0 mt-0 mb-0">
+        <main role="main">
+            @RenderBody()
+        </main>
+    </div>
+
+
+    <footer class="bg-black text-center text-white py-3">
+        &copy; 2025 - TrailLoaded School. All rights reserved.
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+          const quoteBox = document.querySelector('.quote-box');
+          const correspondentImg = document.querySelector('.correspondent-img');
+
+          if (quoteBox) {
+            quoteBox.classList.add('animate');
+          }
+          if (correspondentImg) {
+            correspondentImg.classList.add('animate');
+          }
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+          const section = document.querySelector('.achievements-section');
+          const heading = section.querySelector('.achievements-heading');
+          const items = section.querySelectorAll('.achievement-item');
+
+          function reveal() {
+            const rect = section.getBoundingClientRect();
+            const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+
+            if (rect.top <= windowHeight * 0.85) {
+              heading.style.animationPlayState = 'running';
+              items.forEach((item, index) => {
+                item.style.animationPlayState = 'running';
+                item.style.animationDelay = `${index * 0.3}s`;
+              });
+              window.removeEventListener('scroll', reveal);
+            }
+          }
+
+          heading.style.animationPlayState = 'paused';
+          items.forEach(item => item.style.animationPlayState = 'paused');
+
+          window.addEventListener('scroll', reveal);
+          reveal(); // check on load in case already visible
+        });
+    </script>
+
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
+

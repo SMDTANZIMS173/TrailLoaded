@@ -1,0 +1,126 @@
+﻿@model TrailLoaded.Models.NewAdmission
+
+@{
+    ViewData["Title"] = "New Admission";
+}
+
+<div class="container mt-5">
+    <div class="card shadow-lg rounded-4 border-0">
+        <div class="card-header bg-primary text-white text-center rounded-top-4">
+            <h3 class="mb-0">New Admission Form</h3>
+        </div>
+        <div class="card-body p-4">
+            <form asp-action="NewAdmission" method="post">
+                <!-- Student Info -->
+                <h5 class="text-primary mb-3">Student Information</h5>
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <label asp-for="FirstName" class="form-label">First Name</label>
+                        <input asp-for="FirstName" class="form-control" placeholder="Enter first name" />
+                    </div>
+                    <div class="col-md-6">
+                        <label asp-for="LastName" class="form-label">Last Name</label>
+                        <input asp-for="LastName" class="form-control" placeholder="Enter last name" />
+                    </div>
+                    <div class="col-md-4">
+                        <label asp-for="Gender" class="form-label">Gender</label>
+                        <select asp-for="Gender" class="form-select">
+                            <option value="">-- Select --</option>
+                            <option>Male</option>
+                            <option>Female</option>
+                            <option>Other</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <label asp-for="DateOfBirth" class="form-label">Date of Birth</label>
+                        <input asp-for="DateOfBirth" type="date" class="form-control" />
+                    </div>
+                    <div class="col-md-4">
+                        <label asp-for="Standard" class="form-label">Standard</label>
+                        <input asp-for="Standard" class="form-control" placeholder="e.g., 10th, 12th" />
+                    </div>
+                    <div class="col-md-6">
+                        <label asp-for="Course" class="form-label">Course</label>
+                        <input asp-for="Course" class="form-control" placeholder="e.g., CBSE, State" />
+                    </div>
+                    <div class="col-md-6">
+                        <label asp-for="StudentPhone" class="form-label">Student Phone</label>
+                        <input asp-for="StudentPhone" class="form-control" placeholder="Enter phone number" />
+                    </div>
+                    <div class="col-md-6">
+                        <label asp-for="Email" class="form-label">Email</label>
+                        <input asp-for="Email" type="email" class="form-control" placeholder="Enter email" />
+                    </div>
+                    <div class="col-md-6">
+                        <label asp-for="StudentAadhaar" class="form-label">Student Aadhaar</label>
+                        <input asp-for="StudentAadhaar" class="form-control" placeholder="Enter Aadhaar number" />
+                    </div>
+                </div>
+
+                <hr class="my-4" />
+
+                <!-- Parent Info -->
+                <h5 class="text-primary mb-3">Parent Information</h5>
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <label asp-for="FatherName" class="form-label">Father's Name</label>
+                        <input asp-for="FatherName" class="form-control" />
+                    </div>
+                    <div class="col-md-6">
+                        <label asp-for="MotherName" class="form-label">Mother's Name</label>
+                        <input asp-for="MotherName" class="form-control" />
+                    </div>
+                    <div class="col-md-6">
+                        <label asp-for="ParentMobile" class="form-label">Parent Mobile</label>
+                        <input asp-for="ParentMobile" class="form-control" />
+                    </div>
+                    <div class="col-md-6">
+                        <label asp-for="FatherOccupation" class="form-label">Father's Occupation</label>
+                        <input asp-for="FatherOccupation" class="form-control" />
+                    </div>
+                    <div class="col-md-6">
+                        <label asp-for="ParentAadhaar" class="form-label">Parent Aadhaar</label>
+                        <input asp-for="ParentAadhaar" class="form-control" />
+                    </div>
+                </div>
+
+                <hr class="my-4" />
+
+                <!-- Address Info -->
+                <h5 class="text-primary mb-3">Address Information</h5>
+                <div class="row g-3">
+                    <div class="col-12">
+                        <label asp-for="Address" class="form-label">Full Address</label>
+                        <textarea asp-for="Address" class="form-control" rows="3"></textarea>
+                    </div>
+                </div>
+
+                <div class="text-center mt-4">
+                    <button type="submit" class="btn btn-success px-4 py-2 rounded-3 shadow-sm">
+                        Submit Admission
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<section class="map-with-card-section position-relative my-3">
+    <!-- Full width map iframe -->
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3806.038639434104!2d78.4730812747964!3d17.38641158807326!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb973cabcd6911%3A0x2f04e6ed1d7aaf39!2sTrailLoaded%20Institution!5e0!3m2!1sen!2sin!4v1691777777777!5m2!1sen!2sin"
+            width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade" class="map-iframe">
+    </iframe>
+
+
+    <!-- Floating info card on top right -->
+    <div class="map-info-card shadow rounded p-4 bg-dark text-white">
+        <h3 class="mb-3">
+            <i class="bi bi-building me-2"></i> TrailLoaded Institution
+        </h3>
+        <p><i class="bi bi-geo-alt-fill me-2"></i> 123 Main Street, Your City, Your State, ZIP</p>
+        <p><i class="bi bi-telephone-fill me-2"></i> +91 (123) 456-7890</p>
+        <p><i class="bi bi-envelope-fill me-2"></i> info@trailloaded.edu</p>
+    </div>
+</section>
+
