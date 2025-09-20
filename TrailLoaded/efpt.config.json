@@ -22,6 +22,10 @@
       {
          "Name": "[dbo].[NewAdmission]",
          "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Student]",
+         "ObjectType": 0
       }
    ],
    "UiHint": null,

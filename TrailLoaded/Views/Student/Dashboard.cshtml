@@ -1,0 +1,13 @@
+﻿@model TrailLoaded.Models.StudentDashboardViewModel
+
+@{
+    ViewData["Title"] = "Student Dashboard";
+}
+
+<div class="container py-5">
+    <h2>Welcome, @Model.FirstName @Model.LastName</h2>
+    <p>Admission No: @Model.AdmissionId</p>
+    <p>Class: @Model.Standard</p>
+    <p>Fee Paid: @(Model.AdmFeePaid == true ? "Yes" : "No")</p>
+</div>
+

@@ -21,6 +21,8 @@ public partial class SchoolTrailContext : DbContext
 
     public virtual DbSet<NewAdmission> NewAdmissions { get; set; }
 
+    public virtual DbSet<Student> Students { get; set; }
+
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
         => optionsBuilder.UseSqlServer("Data Source=localhost\\SQLEXPRESS;Initial Catalog=SchoolTrail;Integrated Security=True;Encrypt=False");
@@ -91,8 +93,26 @@ public partial class SchoolTrailContext : DbContext
             entity.Property(e => e.Standard)
                 .IsRequired()
                 .HasMaxLength(50);
+            entity.Property(e => e.Status).HasMaxLength(20);
             entity.Property(e => e.StudentAadhaar).HasMaxLength(20);
             entity.Property(e => e.StudentPhone).HasMaxLength(15);
+        });
+
+        modelBuilder.Entity<Student>(entity =>
+        {
+            entity.HasKey(e => e.StudentId).HasName("PK__Student__32C52B99FB6C1CD9");
+
+            entity.ToTable("Student");
+
+            entity.Property(e => e.AdmFeePaid).HasDefaultValue(false);
+            entity.Property(e => e.CreatedAt)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnType("datetime");
+
+            entity.HasOne(d => d.Admission).WithMany(p => p.Students)
+                .HasForeignKey(d => d.AdmissionId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK__Student__Admissi__4BAC3F29");
         });
 
         OnModelCreatingPartial(modelBuilder);

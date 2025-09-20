@@ -1,6 +1,9 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using TrailLoaded.Models;
+using System.Linq;
+
+
 
 namespace YourNamespace.Controllers
 {
@@ -64,5 +67,6 @@ namespace YourNamespace.Controllers
         {
             return View();
         }
+
     }
 }

@@ -1,0 +1,47 @@
+﻿@model IEnumerable<TrailLoaded.Models.NewAdmissionViewModel>
+
+<h2>Pending Admissions</h2>
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Admission No</th>
+            <th>Student Name</th>
+            <th>Status</th>
+            <th>Fee Paid</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.AdmissionId</td>
+                <td>@item.FirstName @item.LastName</td>
+                <td>@(string.IsNullOrEmpty(item.Status) ? "Pending" : item.Status)</td>
+                <td>@(item.FeePaid ? "Paid" : "Not Paid")</td>
+                <td>
+                    @if (string.IsNullOrEmpty(item.Status) || item.Status == "Pending")
+                    {
+                        <form asp-action="Approve" method="post" style="display:inline">
+                            <input type="hidden" name="admissionId" value="@item.AdmissionId" />
+                            <button type="submit" class="btn btn-success btn-sm">Approve</button>
+                        </form>
+
+                        <form asp-action="Reject" method="post" style="display:inline">
+                            <input type="hidden" name="admissionId" value="@item.AdmissionId" />
+                            <button type="submit" class="btn btn-danger btn-sm">Reject</button>
+                        </form>
+                    }
+
+                    @if (item.Status == "Approved" && !item.FeePaid)
+                    {
+                        <form asp-action="MarkFeePaid" method="post" style="display:inline">
+                            <input type="hidden" name="admissionId" value="@item.AdmissionId" />
+                            <button type="submit" class="btn btn-primary btn-sm">Mark Fee Paid</button>
+                        </form>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

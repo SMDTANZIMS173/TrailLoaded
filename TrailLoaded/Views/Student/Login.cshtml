@@ -1,0 +1,61 @@
+﻿@model TrailLoaded.Models.StudentLoginViewModel
+
+@{
+    ViewData["Title"] = "Student Login";
+}
+
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6 col-lg-5">
+            <div class="card shadow-sm p-4">
+                <h3 class="text-center mb-4">Student Login</h3>
+
+                @using (Html.BeginForm("Login", "Student", FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+                    <div class="mb-3">
+                        @Html.LabelFor(m => m.AdmissionNo, new { @class = "form-label" })
+                        @Html.TextBoxFor(m => m.AdmissionNo, new { @class = "form-control", placeholder = "Enter Admission No" })
+                        @Html.ValidationMessageFor(m => m.AdmissionNo, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="mb-3">
+                        @Html.LabelFor(m => m.DateOfBirth, new { @class = "form-label" })
+                        @Html.TextBoxFor(m => m.DateOfBirth, "{0:yyyy-MM-dd}", new { @class = "form-control", type = "date" })
+                        @Html.ValidationMessageFor(m => m.DateOfBirth, "", new { @class = "text-danger" })
+                    </div>
+
+                    <button type="submit" class="btn btn-primary w-100">Login</button>
+
+                    @if (!ViewData.ModelState.IsValid)
+                    {
+                        <div class="text-danger mt-2">
+                            @Html.ValidationSummary(true)
+                        </div>
+                    }
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    body {
+        background-color: #f8f9fa;
+    }
+
+    .card {
+        border-radius: 15px;
+    }
+
+    button.btn-primary {
+        background-color: #0d6efd;
+        border: none;
+        transition: transform 0.2s ease-in-out;
+    }
+
+        button.btn-primary:hover {
+            transform: scale(1.05);
+        }
+</style>
+
